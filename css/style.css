@@ -75,6 +75,14 @@ section {
 	}
 	.g-recaptcha {
 		padding-bottom: 20px;
+		padding-top: 20px;
+	}
+	
+/*Footer*/
+	#footer {
+		background-color: #ff6029;
+		text-align: center;
+		padding: 40px;
 	}
 /*Fonts*/
 /*The main font in the website: font-family: 'Roboto Slab', serif;*/

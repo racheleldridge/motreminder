@@ -13,16 +13,6 @@
 	<!--sign in-->
 					<div class="col-12 col-md-6" id="signin">
 						<h2>Please complete form</h2>
-<?php 
-	if($_POST['fn'] AND $_POST['ln'] AND $_POST['em'] AND filter_var($_POST['em'], FILTER_VALIDATE_EMAIL)) {
-		echo 'you entered the details';
-		if(!($_POST['pw'] == $_POST['cpw'])) {
-			
-			echo 'Passwords dont match';
-		}
-	}
-
-?>						
 						<p>yutyutu</p>
 						<!--
 						<?php print_r($_POST); ?>
@@ -33,5 +23,3 @@
 				</div>
 			</div>
 		</section><?php include 'footer.php';?>
-		
-		
