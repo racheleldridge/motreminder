@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!--Meta tags-->
+		    <meta charset="utf-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+			<meta name="description" content="A MOT reminder app">
+			<meta name="author" content="Rachel Eldridge">
+		<!--favicon-->
+			<link rel="icon" href="images/favicon.ico">
+		<!--title-->
+			<title>MOT Reminder</title>
+		<!--Bootstrap style-->
+		    <link href="css/bootstrap.min.css" rel="stylesheet">   
+		<!--Font CSS-->
+			<link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">			
+		<!--Personal style-->
+			<link href="css/style.css" rel="stylesheet">
+		<!--reCAPTCHA-->
+			<script src='https://www.google.com/recaptcha/api.js'></script>
+
+	</head>
+	<body>
+	<!--Navigation-->
+		<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark re-nav">
+			<h1 class="re-center"><a class="navbar-brand" href="#">The MOT Reminder</a></h1></br>
+			<button class="navbar-toggler re-center re-navbutton" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"><img src="images/lines.png"></span>
+			</button>
+			<div class="collapse navbar-collapse re-center" id="navbarCollapse">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="#">Home</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">About</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Sign Up</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Sign In</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+	<!--Description section-->
+		<section id="description">
+			<div class="container">
+				<div>
+					<h1>What do we do?</h1>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel consectetur tortor. Nunc massa mi, sollicitudin eu massa eu, tempor tempor dui. Cras sed placerat ex, ut tincidunt ligula. Sed rhoncus, tortor sed condimentum cursus, lorem sem maximus leo, ut imperdiet augue mauris nec dolor. Vestibulum porta vestibulum eros, eu rhoncus erat. In laoreet eros id dui cursus consequat. Vivamus ultricies vestibulum odio vel varius. Ut vestibulum nisi a massa semper efficitur. In ac fermentum lorem, ac tristique ligula.</p>
+				</div>
+			</div>
+		</section>
+	<!--Image section for a divider-->
+		<section id="image">
+			<div class="hidden-sm-down parallax">
+			</div>
+		</section>
+	<!--Both the sign up and the sign in sections-->
+		<section id="sign">
+			<div class="container">
+				<div class="row">
+	<!--sign up-->
+					<div class="col-12 col-md-6" id="signup">
+						<h2>Sign Up</h2>
+						<form action="signup.php" method="post">
+							<div class="form-group">
+								<label for="FirstName">First name</label>
+								<input type="text" class="form-control" placeholder="First name" name="fn" required>
+							</div>
+							<div class="form-group">
+								<label for="LastName">Last name</label>
+								<input type="text" class="form-control" placeholder="Last name" name="ln" required>
+							</div>
+							<div class="form-group">
+								<label for="Email">Email address</label>
+								<input type="email" class="form-control" id="Email" aria-describedby="emailHelp" placeholder="Enter email" name="em" required>
+							</div>
+							<div class="form-group">
+								<label for="Password">Password</label>
+								<input type="password" class="form-control" id="Password" placeholder="Password" name="pw" required>
+							</div>
+							<div class="form-group">
+								<label for="ConfirmPassword">Confirm Password</label>
+								<input type="password" class="form-control" id="Password" placeholder="Confirm Password" name="cpw" required>
+							</div>
+							<div class="g-recaptcha" data-sitekey="6Lf8EFwUAAAAAPQhbIInFYeP9KkbrGs5aHGPOswp" required></div>
+							<button type="submit" class="btn re-button" name="submit" value="submit">Sign up</button>
+						</form>
+					</div>
+	<!--sign in-->
+					<div class="col-12 col-md-6" id="signin">
+						<h2>Sign In</h2>
+						<form>
+							<div class="form-group">
+								<label for="Email">Email address</label>
+								<input type="email" class="form-control" id="Email" aria-describedby="emailHelp" placeholder="Enter email" required>
+							</div>
+							<div class="form-group">
+								<label for="Password">Password</label>
+								<input type="password" class="form-control" id="Password" placeholder="Password" required>
+							</div>
+							<div class="row">
+								<div class="col-6">
+									<button type="button" class="btn re-button">Sign in</button>
+								</div>
+								<div class="col-6">
+								<a href="#"><p>Forgotten Password</p></a>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</section>
+<!-- Bootstrap core JavaScript
+		================================================== -->
+		<!-- Placed at the end of the document so the pages load faster -->
+			<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+			<script src="js/bootstrap.min.js"></script>
+	</body>
+</html>

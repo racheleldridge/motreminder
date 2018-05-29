@@ -1,0 +1,20 @@
+COLOURS 
+
+yellow
+FFD96D
+	light
+	fff0c5
+	dark
+	ffc729
+orange 
+FFBF6D
+	light 
+	ffe5c5
+	dark
+	ffa029
+red 
+FF926D
+	light 
+	ffd4c5
+	dark
+	ff6029

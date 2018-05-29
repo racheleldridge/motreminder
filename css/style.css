@@ -1,0 +1,124 @@
+/*CSS for The MOT Reminder*/
+
+section {
+	padding-top: 40px;
+	padding-bottom: 40px;
+}
+
+/*Navigation*/
+	.re-nav {
+		color: black!important;
+		font-family: 'Roboto Slab', serif!important;	
+		background-color: #ff6029!important;
+		padding-left: 25%;
+		padding-right: 25%;
+	}
+	.re-nav a {
+		color: black!important;
+		font-family: 'Roboto Slab', serif;	
+	}
+	.re-nav a:hover {
+		color: black;
+		font-family: 'Roboto Slab', serif;	
+		text-decoration: underline;
+	}
+	.re-nav li {
+		padding: 0px 30px; 
+	}
+	.re-navbutton {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.navbar-dark .navbar-toggler {
+		border-color: black;
+	}
+	.re-center {
+		text-align: center;
+	}
+/*Description*/
+	#description {
+		margin-top: 100px;
+	}
+/*Image divider*/
+	#image {
+		margin: 0px;
+		padding-bottom: 0px;
+	}
+	.parallax {
+		/* The image used */
+		background-image: url(http://www.evanshalshaw.com/images/218870/715720/1386369);
+		/* Set a specific height */
+		min-height: 300px; 
+		/* Create the parallax scrolling effect */
+		background-attachment: fixed;
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: 100% 100%;
+	}
+/*Sign up and Sign in*/
+	#sign {
+		background-color: #FFD96D;
+	}
+	#signup {
+		background-color: #FFD96D;
+		padding: 30px;
+	}
+	#signin {
+		background-color: #FFD96D;
+		padding: 30px;
+	}
+	.re-button {
+		background-color: #ff6029;
+		font-family: 'Roboto Slab', serif;	
+		color: black;
+	}
+	.g-recaptcha {
+		padding-bottom: 20px;
+	}
+/*Fonts*/
+/*The main font in the website: font-family: 'Roboto Slab', serif;*/
+	h1 {
+		font-family: 'Roboto Slab', serif;	
+		color: black;
+	}
+	h2 {
+		font-family: 'Roboto Slab', serif;	
+		color: black;
+	}
+	h3 {
+		font-family: 'Roboto Slab', serif;	
+		color: black;
+	}
+	h4 {
+		font-family: 'Roboto Slab', serif;	
+		color: black;
+	}
+	h5 {
+		font-family: 'Roboto Slab', serif;	
+		color: black;
+	}
+	h6 {
+		font-family: 'Roboto Slab', serif;	
+		color: black;
+	}
+	p {
+		font-family: 'Roboto Slab', serif;	
+		color: black;
+	}
+	a {
+		font-family: 'Roboto Slab', serif;	
+		color: black;
+	}
+	a.nav-link {
+		font-family: 'Roboto Slab', serif;	
+		color: black;
+	}
+	label {
+		font-family: 'Roboto Slab', serif;	
+		color: black;
+	}
+	input {
+		font-family: 'Roboto Slab', serif;	
+		color: black;
+	}
