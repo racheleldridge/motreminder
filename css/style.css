@@ -130,3 +130,8 @@ section {
 		font-family: 'Roboto Slab', serif;	
 		color: black;
 	}
+	ol {
+		font-family: 'Roboto Slab', serif;	
+		color: black;
+		padding-left: 15px;
+	}

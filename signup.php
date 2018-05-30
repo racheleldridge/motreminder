@@ -9,7 +9,7 @@
 						<?php 
 							$error = "";
 							if($_POST['do'] == 'signup'){
-								if($_POST['fn'] AND $_POST['ln'] AND $_POST['em'] AND $_POST['pw'] AND $_POST['cpw'] {
+								if($_POST['fn'] AND $_POST['ln'] AND $_POST['em'] AND $_POST['pw'] AND $_POST['cpw']) {
 									if(!(filter_var($_POST['em'], FILTER_VALIDATE_EMAIL))) {
 										$error .= 'Incorrect email';
 									}
@@ -30,10 +30,10 @@
 										//echo $activated."xxx";
 										if ( $em) {
 											if ($activated == 0) {
-												$error .= "there is an account that has the email but isnt activated";
+												$error .= "there is an account that has the email but isnt activated click <a href=''>here</a> to send the activation email again";
 											}
 											else {
-												$error .= "there is an account that has the email - sign in";
+												$error .= "there is an account that has the email. Click <a href=''>here</a> to sign in";
 											}
 											include 'signupform.php';
 										} 

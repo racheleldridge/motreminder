@@ -19,7 +19,7 @@
 		</div>
 		<div class="form-group">
 			<label for="ConfirmPassword">Confirm Password *</label>
-			<input type="password" class="form-control" id="Password" placeholder="Confirm Password" name="cpw" required>
+			<input type="password" class="form-control" id="ConfirmPassword" placeholder="Confirm Password" name="cpw" required>
 		</div>
 		<div class="g-recaptcha" data-sitekey="6Lf8EFwUAAAAAPQhbIInFYeP9KkbrGs5aHGPOswp" required></div>
 		<div class="row">
