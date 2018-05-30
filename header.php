@@ -1,3 +1,5 @@
+<!--DB-->
+	<?php include 'config.php';?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -18,7 +20,7 @@
 			<link href="css/style.css" rel="stylesheet">
 		<!--reCAPTCHA-->
 			<script src='https://www.google.com/recaptcha/api.js'></script>
-
+		
 	</head>
 	<body>
 	<!--Navigation-->

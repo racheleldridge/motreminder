@@ -1,5 +1,6 @@
 	<h2>Sign In</h2>
 	<form>
+		<input type="hidden" value="signin" name="do" />
 		<div class="form-group">
 			<label for="Email">Email address</label>
 			<input type="email" class="form-control" id="Email" aria-describedby="emailHelp" placeholder="Enter email" required>

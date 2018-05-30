@@ -1,0 +1,6 @@
+captcha 
+
+site key 
+6Lf8EFwUAAAAAPQhbIInFYeP9KkbrGs5aHGPOswp
+secret key
+6Lf8EFwUAAAAALUVa3rtqmF19AzJeSOEEMqpoEkY
