@@ -106,6 +106,9 @@ section {
 		text-align: center;
 		padding: 40px;
 	}
+	#hello {
+		padding: 100px;
+	}
 /*Fonts*/
 /*The main font in the website: font-family: 'Roboto Slab', serif;*/
 	h1 {

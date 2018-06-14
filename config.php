@@ -20,7 +20,7 @@
 	}
 	
 	define("SITESITELINK","http://localhost/rachel/motreminder/motreminder/"); //Add trailling slash 
-	define("NOREPLYEMAIL","noreply@creote.com");
+	define("NOREPLYEMAIL","noreply@creotec.com");
 	
 	function cleanEmail($string) {
    return preg_replace('/[^A-Za-z0-9]\-_@./', '', $string); // Removes special chars.

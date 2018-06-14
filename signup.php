@@ -26,9 +26,8 @@
 									if ($stmt = $mysqli->prepare($sql)) {
 										$stmt->bind_param("s", $_POST['em']);
 										$stmt->execute();
-										$stmt->bind_result($em,$activated);											
+										$stmt->bind_result($em,$activated);
 										$stmt->fetch();
-										//echo $activated."xxx";
 										if ( $em) {
 											if ($activated == 0) {
 												$error .= "<p>There is an account that has the email but isnt activated click <a href=''>here</a> to send the activation email again</p>";
@@ -37,11 +36,11 @@
 												$error .= "<p>There is an account that has the email. Click <a href=''>here</a> to sign in</p> ";
 											}
 											include 'signupform.php';
-										} 
+										}  
 										else {
 											$rannum = generateRandomString(50);
 											$stmt = $mysqli->prepare("INSERT INTO people (first_name, last_name,email,pwd,activation_code) VALUES (?, ?, ?, ?, ?)");
-											$stmt->bind_param("sssss", $_POST['fn'], $_POST['ln'],$_POST['em'],$_POST['pw'],$rannum);
+											$stmt->bind_param("sssss", $_POST['fn'], $_POST['ln'],$_POST['em'],md5($_POST['pw']),$rannum);
 											$stmt->execute();
 											
 											$activationlink = SITESITELINK."activation.php?a=".$rannum;
@@ -69,7 +68,7 @@
 											// Sending email
 											mail($to, $subject, $message, $headers);
 
-											$congratulations = "<div class='col-12'><div class='signinsucsess'><h2>Congratulations!</h2><P>Your account was created successfully. Please check your emails and click on the link to activate your account</p><div><div>";
+											$congratulations = "<div class='col-12'><div class='signinsucsess'><h2>Congratulations!</h2><P>Your account was created successfully. Please check your emails and click on the link to activate your account.</p><div><div>";
 										}		
 									$stmt->close();
 									}
