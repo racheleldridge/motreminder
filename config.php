@@ -18,4 +18,11 @@
 		}
 		return $randomString;
 	}
+	
+	define("SITESITELINK","http://localhost/rachel/motreminder/motreminder/"); //Add trailling slash 
+	define("NOREPLYEMAIL","noreply@creote.com");
+	
+	function cleanEmail($string) {
+   return preg_replace('/[^A-Za-z0-9]\-_@./', '', $string); // Removes special chars.
+}
 ?>
