@@ -38,7 +38,7 @@
 						<a class="nav-link" href="#">About</a>
 					</li>
 					<?php
-					if(!isset($_COOKIE['signincookie'])) {
+					if(isset($_COOKIE['signincookie'])) {
 						echo '
 					<li class="nav-item">
 						<a class="nav-link" href="edit.php">Edit profile</a>

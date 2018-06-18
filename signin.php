@@ -28,7 +28,7 @@
 										$stmt->fetch();
 										if ($em) {
 											if ($activated == 0) {
-												$error .= '<p>There is an account with this email but it isnt acctivated click <a href=" ">here</a> to re send the email or click <a href=""> here</a> to sign up with a different email</p>';
+												$error .= '<p>There is an account with this email but it isnt acctivated click <a href=" ">here</a> to re send the email or click <a href="signup.php"> here</a> to sign up with a different email</p>';
 											}
 											else {
 												$congratulations .= "<p>Sign in sucessfull!</p>";
@@ -37,7 +37,8 @@
 											}
 										} 
 										else {
-											$error .= '<p>There is no account with this email. Click <a>here</a> to sign up </p>';
+											$error .= '<p>incorrect username/password.</p>';
+											include 'signinform.php';
 										}
 									$stmt->close();
 									}

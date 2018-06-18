@@ -22,15 +22,34 @@
 										printf("Connect failed: %s\n", mysqli_connect_error());
 										exit();
 									}
-									$sql = "SELECT email,activated FROM people WHERE email = ?";
+									$sql = "SELECT email,activated, activation_code FROM people WHERE email = ?";
 									if ($stmt = $mysqli->prepare($sql)) {
 										$stmt->bind_param("s", $_POST['em']);
 										$stmt->execute();
-										$stmt->bind_result($em,$activated);
+										$stmt->bind_result($em,$activated,$ac);
 										$stmt->fetch();
-										if ( $em) {
+										if ($em) {
 											if ($activated == 0) {
-												$error .= "<p>There is an account that has the email but isnt activated click <a href=''>here</a> to send the activation email again</p>";
+												$error .= "<p>There is an account with this email but it has not been activated. Please check your emails as we have resent the activation email</p>";
+												$activationlink = SITESITELINK."activation.php?a=".$ac;
+											
+											$activationmessage = "<p>Hi ".stripslashes($_POST['fn'])."</p><p>Thank you very much for creating an account. Click on the activation link below to activate your account</p><p>Activation link: <a href=\"".$activationlink."\">".$activationlink."</a></p><p>Your great team.</p>";
+											$to = $_POST['em'];
+											$subject = 'Activation email for MOT reminder service';
+											$from = NOREPLYEMAIL;
+											// To send HTML mail, the Content-type header must be set
+											$headers  = 'MIME-Version: 1.0' . "\r\n";
+											$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+											// Create email headers
+											$headers .= 'From: '.$from."\r\n".
+												'Reply-To: '.$from."\r\n" .
+												'X-Mailer: PHP/' . phpversion();
+											// Compose a simple HTML email message
+											$message = '<html><body>';
+											$message .= $activationmessage;
+											$message .= '</body></html>';
+											// Sending email
+											mail($to, $subject, $message, $headers);
 											}
 											else {
 												$error .= "<p>There is an account that has the email. Click <a href=''>here</a> to sign in</p> ";

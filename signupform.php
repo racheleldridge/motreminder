@@ -11,7 +11,7 @@
 		</div>
 		<div class="form-group">
 			<label for="Email">Email address *</label>
-			<input type="email" class="form-control" id="Email" aria-describedby="emailHelp" placeholder="Enter email" name="em" required>
+			<input type="email" class="form-control" id="Email" aria-describedby="emailHelp" placeholder="Enter email" name="em" value="<?php echo $_POST[em];?>" required>
 		</div>
 		<div class="form-group">
 			<label for="Password">Password *</label>

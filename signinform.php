@@ -15,7 +15,7 @@
 				<button type="submit" class="btn re-button">Sign in</button>
 			</div>
 			<div class="col-6">
-				<a href="#"><p>Forgotten Password</p></a>
+				<a href="forgotpassword.php"><p>Forgotten Password</p></a>
 			</div>
 		</div>
 	</form>

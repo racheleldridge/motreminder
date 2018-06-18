@@ -19,7 +19,7 @@
 		return $randomString;
 	}
 	
-	define("SITESITELINK","http://localhost/rachel/motreminder/motreminder/"); //Add trailling slash 
+	define("SITESITELINK","http://192.168.1.70/rachel/motreminder/motreminder/"); //Add trailling slash 
 	define("NOREPLYEMAIL","noreply@creotec.com");
 	
 	function cleanEmail($string) {

@@ -20,7 +20,7 @@
 							$stmt->bind_param("s",$_GET['a']);
 							$stmt->execute();
 							$stmt->close();
-							echo "<div class='re-activated'><h2>Thank you!</h2><p>You have successfully activated your account</p><p>Click <a href=".">here</a> to sign in</p></div>";
+							echo "<div class='re-activated'><h2>Thank you!</h2><p>You have successfully activated your account</p><p>Click <a href='signin.php'>here</a> to sign in</p></div>";
 							}		
 							else {
 								echo "<p>Please supply a valid activation code</p>";
