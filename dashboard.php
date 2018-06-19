@@ -2,8 +2,8 @@
 	<section id="hello">
 		<div class="container">
 		<?php
-	
-		echo '<p>Hello ' . $_COOKIE['signincookie'].'!</p>';
+			//shows name
+			echo '<p>Hello ' . $_COOKIE['signincookie'].'!</p>';
 		?>
 		</div>
 	</section>

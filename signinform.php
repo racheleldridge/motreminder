@@ -1,4 +1,5 @@
 	<h2>Sign In</h2>
+	<!-- this form is for the change sign in page-->
 	<form action="signin.php" method="post">
 		<input type="hidden" value="signin" name="do" />
 		<div class="form-group">

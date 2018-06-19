@@ -1,4 +1,5 @@
 <h2>Forgotten Password</h2>
+<!--this form is for the forgotten password page-->
 <form action="forgotpassword.php" method="post">
 	<input type="hidden" value="forgotpassword" name="do" />
 	<div class="form-group">

@@ -1,3 +1,4 @@
+		<!--the footer-->
 		<footer class="footer" id="footer">
 			<h6>© 2018 MOT Reminder</h6>
 		</footer>

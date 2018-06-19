@@ -1,4 +1,5 @@
 <h2>Change password</h2>
+<!--this form is for the change password page-->
 <form action="changepassword.php" method="post">
 		<input type="hidden" value="changepassword" name="do" />
 		<input type="hidden" value="<?php echo $_REQUEST['a'];?>" name="a" />

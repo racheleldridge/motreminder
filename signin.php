@@ -45,9 +45,8 @@
 								}
 								else {
 									$error .= '<p>Please enter a correct email and password</p>';	
-									include 'signinform.php';									
+									include 'signinform.php';								
 								}
-								
 							}	
 							else {
 								include 'signinform.php';
