@@ -38,24 +38,24 @@
 						<a class="nav-link" href="#">About</a>
 					</li>
 					<?php
-					if(isset($_COOKIE['signincookie'])) {
-						echo '
-					<li class="nav-item">
-						<a class="nav-link" href="edit.php">Edit profile</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="signout.php">Sign out</a>
-					</li>';
-					}
-					else {
-						echo '
-					<li class="nav-item">
-						<a class="nav-link" href="signup.php">Sign Up</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="signin.php">Sign In</a>
-					</li>';
-					}
+						if(isset($_COOKIE['signincookie'])) {
+							echo '
+							<li class="nav-item">
+								<a class="nav-link" href="edit.php">Edit profile</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="signout.php">Sign out</a>
+							</li>';
+						}
+						else {
+							echo '
+							<li class="nav-item">
+								<a class="nav-link" href="signup.php">Sign Up</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="signin.php">Sign In</a>
+							</li>';
+						}
 					?>
 				</ul>
 			</div>
