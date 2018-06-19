@@ -6,22 +6,26 @@
 				<div class="row">
 					<div class="col-12">
 						<?php
+							//function to clear a string of special characters
 							function cleanA($string) {
 							   return preg_replace('/[^A-Za-z0-9]/', '', $string); // Removes special chars.
 							}
+							//clean the link
 							$_GET['a'] = cleanA($_GET['a']);
+							//check the link 
 							if (strlen($_GET['a']) == 50) {
 								$mysqli = new mysqli($servername, $username, $password, $dbname);
 								if (mysqli_connect_errno()) {
 									printf("Connect failed: %s\n", mysqli_connect_error());
 									exit();
 								}
-							$stmt = $mysqli->prepare("UPDATE people SET activated = b'1' WHERE activation_code = ?");
-							$stmt->bind_param("s",$_GET['a']);
-							$stmt->execute();
-							$stmt->close();
-							echo "<div class='re-activated'><h2>Thank you!</h2><p>You have successfully activated your account</p><p>Click <a href='signin.php'>here</a> to sign in</p></div>";
-							}		
+								$stmt = $mysqli->prepare("UPDATE people SET activated = b'1' WHERE activation_code = ?");
+								$stmt->bind_param("s",$_GET['a']);
+								$stmt->execute();
+								$stmt->close();
+								echo "<div class='re-activated'><h2>Thank you!</h2><p>You have successfully activated your account</p><p>Click <a href='signin.php'>here</a> to sign in</p></div>";
+							}
+							//if the link is wrong							
 							else {
 								echo "<p>Please supply a valid activation code</p>";
 							}

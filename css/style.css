@@ -89,6 +89,9 @@ section {
 		padding: 20px;
 		text-align: center;
 	}
+	.signinsucsess a {
+		font-weight: 700;
+	}
 	.re-error {
 		color: red;
 		padding:10px 0px;

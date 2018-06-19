@@ -58,8 +58,9 @@
 										}  
 										else {
 											$rannum = generateRandomString(50);
-											$stmt = $mysqli->prepare("INSERT INTO people (first_name, last_name,email,pwd,activation_code) VALUES (?, ?, ?, ?, ?)");
-											$stmt->bind_param("sssss", $_POST['fn'], $_POST['ln'],$_POST['em'],md5($_POST['pw']),$rannum);
+											$expa = generateRandomString(100);
+											$stmt = $mysqli->prepare("INSERT INTO people (first_name, last_name,email,pwd,activation_code, temp_p) VALUES (?, ?, ?, ?, ?, ?)");
+											$stmt->bind_param("ssssss", $_POST['fn'], $_POST['ln'],$_POST['em'],md5($_POST['pw']),$rannum, $expa);
 											$stmt->execute();
 											
 											$activationlink = SITESITELINK."activation.php?a=".$rannum;
