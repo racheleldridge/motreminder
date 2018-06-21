@@ -63,7 +63,7 @@
 											}
 											else {
 												//error message
-												$error .= "<p>There is an account that has the email. Click <a href=''>here</a> to sign in</p> ";
+												$error .= "<p>There is an account that has the email. Click <a href='signin.php'>here</a> to sign in</p> ";
 											}
 											include 'signupform.php';
 										}  

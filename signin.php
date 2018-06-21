@@ -19,12 +19,12 @@
 										printf("Connect failed: %s\n", mysqli_connect_error());
 										exit();
 									}
-									$sql = "SELECT first_name, email, pwd, activated FROM people WHERE email = ? AND pwd = ?";
+									$sql = "SELECT people_no, first_name, email, pwd, activated FROM people WHERE email = ? AND pwd = ?";
 									$enterpwd = md5($_POST['pwd']);
 									if ($stmt = $mysqli->prepare($sql)) {
 										$stmt->bind_param("ss",$_POST['em'], $enterpwd);
 										$stmt->execute();
-										$stmt->bind_result($fn,$em, $pass, $activated);
+										$stmt->bind_result($pn,$fn,$em, $pass, $activated);
 										$stmt->fetch();
 										if ($em) {
 											if ($activated == 0) {
@@ -33,6 +33,16 @@
 											else {
 												$congratulations .= "<p>Sign in sucessfull!</p>";
 												setcookie("signincookie" ,$fn);
+												$sql = "UPDATE people SET session_id = ? WHERE email = ?";
+												$session_id = generateRandomString(100);
+												if ($stmt = $mysqli->prepare($sql)) {
+													$stmt->bind_param("ss",$session_id, $em);
+													$stmt->execute();
+													$stmt->bind_result();
+													$stmt->fetch();
+													$stmt->close();
+												}
+												setcookie("acem" ,$session_id);
 												header("location:dashboard.php");
 											}
 										} 

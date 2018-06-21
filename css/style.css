@@ -88,6 +88,7 @@ section {
 	.signinsucsess {
 		padding: 20px;
 		text-align: center;
+		background-color: #FFD96D;
 	}
 	.signinsucsess a {
 		font-weight: 700;
@@ -103,6 +104,9 @@ section {
 	}
 	.re-error p {
 		color: red;
+	}
+	.car {
+		background-color: #ff6029;
 	}
 /*Footer*/
 	#footer {
@@ -139,7 +143,7 @@ section {
 		padding: 100px;
 	}
 	#signout {
-		padding: 100px;
+		 padding: 100px;
 	}
 /*Fonts*/
 /*The main font in the website: font-family: 'Roboto Slab', serif;*/
