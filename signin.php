@@ -33,16 +33,26 @@
 											else {
 												$congratulations .= "<p>Sign in sucessfull!</p>";
 												setcookie("signincookie" ,$fn);
-												$sql = "UPDATE people SET session_id = ? WHERE email = ?";
-												$session_id = generateRandomString(100);
-												if ($stmt = $mysqli->prepare($sql)) {
-													$stmt->bind_param("ss",$session_id, $em);
-													$stmt->execute();
-													$stmt->bind_result();
-													$stmt->fetch();
-													$stmt->close();
+												$session_kid = generateRandomString(100);
+
+												$xmysqli = new mysqli($servername, $username, $password, $dbname);
+												if (mysqli_connect_errno()) {
+													printf("Connect failed: %s\n", mysqli_connect_error());
+													exit();
 												}
-												setcookie("acem" ,$session_id);
+									
+												$xsql = "UPDATE people SET session_kid = ? WHERE email = ? AND pwd = ?";
+												
+												//die("UPDATE people SET session_kid = '".$session_kid."' WHERE email = '".$em."' AND pwd = '".$pass."'");
+												
+												if ($xstmt = $xmysqli->prepare($xsql)) {
+													$xstmt->bind_param("sss",$session_kid, $em,$pass);
+													$xstmt->execute();
+													$xstmt->bind_result();
+													$xstmt->fetch();
+													$xstmt->close();
+												}
+												setcookie("acem" ,$session_kid);
 												header("location:dashboard.php");
 											}
 										} 
