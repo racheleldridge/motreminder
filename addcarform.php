@@ -7,7 +7,11 @@
 		</div>
 		<div class="form-group">
 			<label for="rd">How many days before you want to be reminded?</label>
-			<input type="text" name='rd' class="form-control" id="rd" placeholder="How many days?" required>
+			<select name="rd">
+				<option value="1week">1 Week</option>
+				<option value="2week">2 Weeks</option>
+				<option value="1month">1 Month</option>
+			</select>
 		</div>
 		<button type="submit" class="btn re-button">Add Car</button>
 </form>
