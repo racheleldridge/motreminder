@@ -31,15 +31,15 @@
 			</button>
 			<div class="collapse navbar-collapse re-center" id="navbarCollapse">
 				<ul class="navbar-nav mr-auto">
-					<li class="nav-item">
-						<a class="nav-link" href="index.php">Home</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">About</a>
-					</li>
 					<?php
 						if(isset($_COOKIE['signincookie'])) {
 							echo '
+							<li class="nav-item">
+								<a class="nav-link" href="dashboard.php">Dashboard</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="aboutpage.php">About</a>
+							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="edit.php">Edit profile</a>
 							</li>
@@ -49,6 +49,12 @@
 						}
 						else {
 							echo '
+							<li class="nav-item">
+								<a class="nav-link" href="index.php">Home</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="index.php#about">About</a>
+							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="signup.php">Sign Up</a>
 							</li>

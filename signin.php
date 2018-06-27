@@ -7,18 +7,24 @@
 	<!--sign in-->
 					<div class="col-12 col-md-6" id="signin">
 						<?php 
+							//variables
 							$error = "";
 							$congratulations = "";
+							//to check if the form is inputted
 							if($_POST['do'] == 'signin'){
+								//if the values are entered
 								if($_POST['em'] AND $_POST['pwd']) {
+									//validate the email
 									if(!(filter_var($_POST['em'], FILTER_VALIDATE_EMAIL))) {
 										$error .= '<p>Incorrect email </p>';
 									}
+									//database connection
 									$mysqli = new mysqli($servername, $username, $password, $dbname);
 									if (mysqli_connect_errno()) {
 										printf("Connect failed: %s\n", mysqli_connect_error());
 										exit();
 									}
+									//query
 									$sql = "SELECT people_no, first_name, email, pwd, activated FROM people WHERE email = ? AND pwd = ?";
 									$enterpwd = md5($_POST['pwd']);
 									if ($stmt = $mysqli->prepare($sql)) {
@@ -26,11 +32,15 @@
 										$stmt->execute();
 										$stmt->bind_result($pn,$fn,$em, $pass, $activated);
 										$stmt->fetch();
+										//if theres a value in the query
 										if ($em) {
+											//to check if the account is acctivated
 											if ($activated == 0) {
+												//error message
 												$error .= '<p>There is an account with this email but it isnt acctivated click <a href=" ">here</a> to re send the email or click <a href="signup.php"> here</a> to sign up with a different email</p>';
 											}
 											else {
+												//sign in
 												$congratulations .= "<p>Sign in sucessfull!</p>";
 												setcookie("signincookie" ,$fn);
 												$session_kid = generateRandomString(100);

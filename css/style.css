@@ -37,8 +37,8 @@ section {
 	.re-center {
 		text-align: center;
 	}
-/*Description*/
-	#description {
+/*About*/
+	#about {
 		margin-top: 100px;
 	}
 /*Image divider*/
@@ -107,6 +107,11 @@ section {
 	}
 	.car {
 		background-color: #ff6029;
+		border-radius: 15px;
+		margin: 10px;
+	}
+	.car a {
+		text-align: center;
 	}
 /*Footer*/
 	#footer {
@@ -164,6 +169,10 @@ section {
 		color: black;
 	}
 	h5 {
+		font-family: 'Roboto Slab', serif;	
+		color: black;
+	}
+	h5 a {
 		font-family: 'Roboto Slab', serif;	
 		color: black;
 	}

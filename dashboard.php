@@ -1,5 +1,11 @@
 <?php 
 	include 'header.php';
+	//to move the page if there is no session cookie
+	if (!isset($_COOKIE['acem']))
+	{
+		header("location:index.php");
+ 		exit;
+	}
 	//alert are you sure if any delete is clicked
 	//then use the information in the url to delete from the database
 	//use the session cookie
@@ -104,36 +110,44 @@
 				<div class="col-12 col-md-7">
 					<?php echo $_COOKIE['acem'];?>
 					<?php
-							$output ="";
-							$mysqli = new mysqli($servername, $username, $password, $dbname);
-							if (mysqli_connect_errno()) {
-								printf("Connect failed: %s\n", mysqli_connect_error());
-								exit();
+						$output ="";
+						$mysqli = new mysqli($servername, $username, $password, $dbname);
+						if (mysqli_connect_errno()) {
+							printf("Connect failed: %s\n", mysqli_connect_error());
+							exit();
+						}
+						$sql = "SELECT p.people_no, c.car_reg, c.colour, c.make, c.reminder_days, c.mot_date 
+						FROM car c
+						JOIN people p 
+						ON c.people_no = p.people_no
+						WHERE session_kid = ? AND deleted = b'0' ORDER BY c.car_reg ASC";
+						if ($stmt = $mysqli->prepare($sql)) {
+							$stmt->bind_param("s",$_COOKIE['acem']);
+							$stmt->execute();
+							$stmt->store_result();
+							if($stmt->num_rows === 0) exit('No rows');
+							$stmt->bind_result($p,$c,$cc,$m,$r,$d); 
+							while($stmt->fetch()) {
+								$output .= "<div class='row'>
+									<div class='col-12 col-md-6 car'>
+										<p><strong>Car Registration: </strong>".strtoupper($c)."</p>
+										<p><strong>Car Details: </strong>".$cc." ".$m."</p>
+										<p><strong>MOT Date: </strong>".$d."</p>
+										<p><strong>Reminder Days: </strong>".$r."</p>
+										<h5><strong><a href=\"".SITESITELINK."dashboard.php?dw=d&c=".$c."&r=".$r."\">Delete</a></strong></h5>
+									</div>
+								</div>";
+								//$output .= "<tr><td>".$c."</td><td>".$d."</td><td>".$r."</td><td><a href=\"".SITESITELINK."dashboard.php?dw=d&c=".$c."&r=".$r."\">Delete</td></tr>";
 							}
-							$sql = "SELECT p.people_no, c.car_reg, c.colour, c.make, c.reminder_days, c.mot_date 
-							FROM car c
-							JOIN people p 
-							ON c.people_no = p.people_no
-							WHERE session_kid = ? AND deleted = b'0' ORDER BY c.car_reg ASC";
-							if ($stmt = $mysqli->prepare($sql)) {
-								$stmt->bind_param("s",$_COOKIE['acem']);
-								$stmt->execute();
-								$stmt->store_result();
-								if($stmt->num_rows === 0) exit('No rows');
-								$stmt->bind_result($p,$c,$cc,$m,$r,$d); 
-								while($stmt->fetch()) {
-									$output .= "<tr><td>".$c."</td><td>".$d."</td><td>".$r."</td><td><a href=\"".SITESITELINK."dashboard.php?dw=d&c=".$c."&r=".$r."\">Delete</td></tr>";
-								}
-								$stmt->close();
-							}
-						
+							$stmt->close();
+						}
 					?>
-					<table class="table table-condensed table-striped">
+					<!-- <table class="table table-condensed table-striped">
 						<thead><tr><th>Reg</th><th>Date</th><th>Days</th><th>&nbsp;</th></tr></thead>
-						<tbody>
+						<tbody> -->
 						<?php echo $output; ?>
-						</tbody>
-					</table>
+						<!-- </tbody>
+					</table> -->
 				</div>
 			</div>
 		</div>
