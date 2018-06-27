@@ -108,7 +108,6 @@
 					</div>
 				</div>
 				<div class="col-12 col-md-7">
-					<?php echo $_COOKIE['acem'];?>
 					<?php
 						$output ="";
 						$mysqli = new mysqli($servername, $username, $password, $dbname);
@@ -142,12 +141,7 @@
 							$stmt->close();
 						}
 					?>
-					<!-- <table class="table table-condensed table-striped">
-						<thead><tr><th>Reg</th><th>Date</th><th>Days</th><th>&nbsp;</th></tr></thead>
-						<tbody> -->
 						<?php echo $output; ?>
-						<!-- </tbody>
-					</table> -->
 				</div>
 			</div>
 		</div>
