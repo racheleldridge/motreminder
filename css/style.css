@@ -108,11 +108,14 @@ section {
 	.car {
 		background-color: #ff6029;
 		border-radius: 15px;
-		margin: 10px;
+		margin: 5px;
 		padding: 20px;
 	}
 	.car h5 {
 		text-align: center;
+	}
+	.addcar {
+		padding-bottom: 20px;
 	}
 	.re-deleted {
 		color: red;
@@ -154,6 +157,9 @@ section {
 	}
 	#signout {
 		 padding: 100px;
+	}
+	#edit {
+		padding: 100px;
 	}
 /*Fonts*/
 /*The main font in the website: font-family: 'Roboto Slab', serif;*/
