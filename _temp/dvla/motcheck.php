@@ -11,7 +11,6 @@ $errors = array();
 $jsonout = array();
 
 if (strlen($myreg)>2) {
-
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_URL,ROOTURL."?registration=".$myreg);
 	curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: application/json","x-api-key:".APIKEY));

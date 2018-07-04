@@ -37,16 +37,7 @@
 <section id="hello">
 	<div class="container">
 		<div class="row">
-			<div class="col-12 col-md-6">
-				<?php
-					//shows name
-					echo '<h2>Hello ' . $_COOKIE['signincookie'].'!</h2>';
-					if($_GET['dw'] == 'd' AND isset($_GET['c']) AND isset($_GET['r'])) {	
-						deleteCar($_GET['c'],$_GET['r'],$_COOKIE['acem']);
-					}
-				?>
-			</div>
-			<div class="col-12 col-md-6 addcar">
+			<div class="col-12 addcar">
 				<!--Add car-->
 				<?php
 					//variables
@@ -90,14 +81,16 @@
 											printf("Connect failed: %s\n", mysqli_connect_error());
 											exit();
 										}
-										$colour = "colour";
-										$make = "make";
-										$datetime = "2018-07-02 12:26:10";
-										$date = "2018-07-02";
-										$sql = "INSERT INTO car (car_reg, colour, make, reminder_days,date_added,people_no, mot_date, deleted)
-											VALUES (?, ?, ?, ?, ?, ?, ?, b'0')";
+										$colour = $jsonout[0]->primaryColour;
+										$make = $jsonout[0]->make;
+										$datetime = date('Y-m-d H:i:s');
+										$date = $jsonout[0]->motTests[0]->expiryDate;
+										$query = serialize($jsonout);
+										$reminderdate = date('Y-m-d', strtotime($dataout[0]->motTests[0]->expiryDate. ' - '.$_POST['rd']));
+										$sql = "INSERT INTO car (car_reg, colour, make, reminder_days,date_added,people_no, mot_date, deleted, motquery, reminder_date)
+										VALUES (?, ?, ?, ?, ?, ?, ?, b'0', ?, ?)";
 										if ($stmt = $mysqli->prepare($sql)) {
-											$stmt->bind_param("sssssss",$_POST['cr'],$colour,$make,$_POST['rd'],$datetime,$pn,$date);
+											$stmt->bind_param("sssssssss",$_POST['cr'],$colour,$make,$_POST['rd'],$datetime,$pn,$date,$query, $reminderdate);
 											$stmt->execute();
 											$stmt->fetch();
 											$congratulations = "<div class='col-12'><div class='signinsucsess'><P>Car Created!</p></div></div>";
@@ -135,7 +128,7 @@
 					printf("Connect failed: %s\n", mysqli_connect_error());
 					exit();
 				}
-				$sql = "SELECT p.people_no, c.car_reg, c.colour, c.make, c.reminder_days, c.mot_date
+				$sql = "SELECT p.people_no, c.car_reg, c.colour, c.make, c.reminder_days, c.mot_date, c.motquery  
 					FROM car c
 					JOIN people p 
 					ON c.people_no = p.people_no
@@ -145,13 +138,15 @@
 					$stmt->execute();
 					$stmt->store_result();
 					if($stmt->num_rows === 0) exit('<h5>There are no reminders set</h5>');
-					$stmt->bind_result($p,$c,$cc,$m,$r,$d); 
+					$stmt->bind_result($p,$c,$cc,$m,$r,$d,$datain); 
 					while($stmt->fetch()) {
+						$dataout = unserialize($datain);
 						$reminderdate = date('Y-m-d', strtotime($d. ' - '.$r));
 						$output .="<div class='col-12 col-md-3 car'>
 							<p><strong>Car Registration: </strong>".strtoupper($c)."</p>
 							<p><strong>Car Details: </strong>".$cc." ".$m."</p>
 							<p><strong>MOT Date: </strong>".$d."</p>
+							<p>TEST: ".$dataout[0]->motTests[0]->completedDate."</p>
 							<p><strong>Reminder Days: </strong>".$r."</p>
 							<p><strong>Reminder Date: </strong>".$reminderdate."</p>
 							<h5><strong><a href=\"".SITESITELINK."dashboard.php?dw=d&c=".$c."&r=".$r."\">Delete</a></strong></h5>

@@ -33,37 +33,42 @@ if (strlen($myreg)>2 AND $_POST['do'] == "getdvla") {
 	
 }
 ?>
-
-<form action="dashboard.php" method="post">
-	<input type="hidden" name="do" value="<?=($_POST['do'] == "getdvla" AND $iok == "ok")?"addcar":"getdvla";?>" />
-	<input type="hidden" name="dataout" value="<?=serialize($jsonout);?>" />
-		<h3>Add a Car:</h3>
-		<?=$ierror;?>
-		<div class="form-group">
-			<label for="cr">Car Registration</label>
-			<input type="text" name='cr' class="form-control" id="cr" placeholder="Car Registration" value="<?=$jsonout[0]->registration;?>" required <?=($_POST['do'] == "getdvla" AND $iok == "ok")?" readonly":"";?>>
-		</div>
+<div class="row">
+	<div class="col-6">
+		<form action="dashboard.php" method="post">
+			<input type="hidden" name="do" value="<?=($_POST['do'] == "getdvla" AND $iok == "ok")?"addcar":"getdvla";?>" />
+			<input type="hidden" name="dataout" value="<?=serialize($jsonout);?>" />
+			<h3>Add a Car:</h3>
+			<?=$ierror;?>
+			<div class="form-group">
+				<label for="cr">Car Registration</label>
+				<input type="text" name='cr' class="form-control" id="cr" placeholder="Car Registration" value="<?=$jsonout[0]->registration;?>" required <?=($_POST['do'] == "getdvla" AND $iok == "ok")?" readonly":"";?>>
+			</div>
+	</div>
+	<div class="col-6">
 		<?php if ($iok == "ok") { ?>
-		<div class="form-group">
-			<p class="lead">If the information below if correct, please add your reminder by selecting reminder timescale below.</p>
-			<table class="table table-sm">
-				<tr><th>Car make</th><td><?=$jsonout[0]->make;?></td></tr>
-				<tr><th>Car model</th><td><?=$jsonout[0]->model;?></td></tr>
-				<tr><th>Car colour</th><td><?=$jsonout[0]->primaryColour;?></td></tr>
-				<tr><th>Last MOT date</th><td><?=$jsonout[0]->motTests[0]->completedDate;?></td></tr>
-				<tr><th>MOT Status</th><td><?=$jsonout[0]->motTests[0]->testResult;?></td></tr>
-				<tr><th>Last MOT mileage</th><td><?=$jsonout[0]->motTests[0]->odometerValue;?></td></tr>
-				<tr><th>MOT due date</th><td><?=$jsonout[0]->motTests[0]->expiryDate;?></td></tr>
-			</table>
-		</div>
+			<div class="form-group">
+				<p class="lead">If the information below if correct, please select a reminder timescale and click add car.</p>
+				<table class="table table-sm">
+					<tr><th>Car make</th><td><?=$jsonout[0]->make;?></td></tr>
+					<tr><th>Car model</th><td><?=$jsonout[0]->model;?></td></tr>
+					<tr><th>Car colour</th><td><?=$jsonout[0]->primaryColour;?></td></tr>
+					<tr><th>Last MOT date</th><td><?=$jsonout[0]->motTests[0]->completedDate;?></td></tr>
+					<tr><th>MOT Status</th><td><?=$jsonout[0]->motTests[0]->testResult;?></td></tr>
+					<tr><th>Last MOT mileage</th><td><?=$jsonout[0]->motTests[0]->odometerValue;?></td></tr>
+					<tr><th>MOT due date</th><td><?=$jsonout[0]->motTests[0]->expiryDate;?></td></tr>
+				</table>
+			</div>
+			<div class="form-group">
+				<label for="rd">How many days before do you want to be reminded?</label>
+				<select name="rd" id="rd">
+					<option value="1 week">1 Week</option>
+					<option value="2 weeks">2 Weeks</option>
+					<option value="1 month">1 Month</option>
+				</select>
+			</div>
 		<?php } ?>		
-		<div class="form-group">
-			<label for="rd">How many days before do you want to be reminded?</label>
-			<select name="rd" id="rd">
-				<option value="1 week">1 Week</option>
-				<option value="2 weeks">2 Weeks</option>
-				<option value="1 month">1 Month</option>
-			</select>
-		</div>
-		<button type="submit" class="btn re-button"><?=($_POST['do'] == "getdvla" AND $iok == "ok")?"Add Car":"Check Car Detail";?></button>
+		<button type="submit" class="btn re-button"><?=($_POST['do'] == "getdvla" AND $iok == "ok")?"Add Car":"Check Car Details";?></button>
+	</div>
+</div>
 </form>

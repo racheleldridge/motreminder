@@ -1,4 +1,12 @@
 <?php include 'header.php';?>
+<?php
+//to move the page if there is no session cookie
+	if (isset($_COOKIE['acem']))
+	{
+		header("location:dashboard.php");
+ 		exit;
+	}
+	?>
 	<!--Description section-->
 		<section id="about">
 			<div class="container">
