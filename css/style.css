@@ -228,9 +228,10 @@ section {
     position: relative;
     padding: 20px;
     margin-top: 10px;
+	color: black;
 }
 
-#message p {
+#message li {
     padding: 10px 35px;
     font-size: 18px;
 }
@@ -242,8 +243,6 @@ section {
 
 .valid:before {
     position: relative;
-    left: -35px;
-    content: "✔";
 }
 
 /* Add a red text color and an "x" when the requirements are wrong */
@@ -253,6 +252,4 @@ section {
 
 .invalid:before {
     position: relative;
-    left: -35px;
-    content: "✖";
 }

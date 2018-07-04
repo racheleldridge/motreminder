@@ -135,7 +135,7 @@
 					printf("Connect failed: %s\n", mysqli_connect_error());
 					exit();
 				}
-				$sql = "SELECT p.people_no, c.car_reg, c.colour, c.make, c.reminder_days, c.mot_date, c.motquery  
+				$sql = "SELECT p.people_no, c.car_reg, c.colour, c.make, c.reminder_days, c.mot_date
 					FROM car c
 					JOIN people p 
 					ON c.people_no = p.people_no
@@ -145,15 +145,13 @@
 					$stmt->execute();
 					$stmt->store_result();
 					if($stmt->num_rows === 0) exit('<h5>There are no reminders set</h5>');
-					$stmt->bind_result($p,$c,$cc,$m,$r,$d,$datain); 
+					$stmt->bind_result($p,$c,$cc,$m,$r,$d); 
 					while($stmt->fetch()) {
-						$dataout = unserialize($datain);
 						$reminderdate = date('Y-m-d', strtotime($d. ' - '.$r));
 						$output .="<div class='col-12 col-md-3 car'>
 							<p><strong>Car Registration: </strong>".strtoupper($c)."</p>
 							<p><strong>Car Details: </strong>".$cc." ".$m."</p>
 							<p><strong>MOT Date: </strong>".$d."</p>
-							<p>TEST: ".$dataout[0]->motTests[0]->completedDate."</p>
 							<p><strong>Reminder Days: </strong>".$r."</p>
 							<p><strong>Reminder Date: </strong>".$reminderdate."</p>
 							<h5><strong><a href=\"".SITESITELINK."dashboard.php?dw=d&c=".$c."&r=".$r."\">Delete</a></strong></h5>

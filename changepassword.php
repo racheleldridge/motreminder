@@ -95,11 +95,58 @@
 					<ol>
 						<li>Enter your new password</li>
 						<li>Make sure it is memorable so you can login with it</li>
+						<div class='message'>
+							<ul>
+								<li id='length' class='invalid'>Minimum 8 characters</li>
+								<li id='number' class='invalid'>A number</li>
+							</ul>
+						</div>
 					</ol>";
 					if (!($error == "") || $congratulations == "") {
 						print_r($instructions);
 					}
 				?>
+				<script>
+							var password = document.getElementById("pw")
+							, confirm_password = document.getElementById("cpw");
+							function validatePassword(){
+								if(password.value != confirm_password.value) {
+									confirm_password.setCustomValidity("Passwords Don't Match");
+								} 
+								else {
+									confirm_password.setCustomValidity('');
+								}
+							}
+							password.onchange = validatePassword;
+							confirm_password.onkeyup = validatePassword;
+						</script>
+						<script>
+							var myInput = document.getElementById("pw");
+							var number = document.getElementById("number");
+							var length = document.getElementById("length");
+							// When the user starts to type something inside the password field
+							myInput.onkeyup = function() {  
+								// Validate numbers
+								var numbers = /[0-9]/g;
+								if(myInput.value.match(numbers)) {  
+									number.classList.remove("invalid");
+									number.classList.add("valid");
+								} 
+								else {
+									number.classList.remove("valid");
+									number.classList.add("invalid");
+								}
+								// Validate length
+								if(myInput.value.length >= 8) {
+									length.classList.remove("invalid");
+									length.classList.add("valid");
+								} 
+								else {
+									length.classList.remove("valid");
+									length.classList.add("invalid");
+								}
+							}
+						</script>
 			</div>
 		</div>
 	</div>
