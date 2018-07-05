@@ -15,6 +15,7 @@
 									printf("Connect failed: %s\n", mysqli_connect_error());
 									exit();
 								}
+								//change the activation bit
 								$stmt = $mysqli->prepare("UPDATE people SET activated = b'1' WHERE activation_code = ?");
 								$stmt->bind_param("s",$_GET['a']);
 								$stmt->execute();

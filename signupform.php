@@ -1,3 +1,4 @@
+<!--sign up form-->
 	<h2>Sign Up</h2>
 	<form action="signup.php" onsubmit="validatePassword()" method="post">
 		<input type="hidden" value="signup" name="do" />

@@ -81,16 +81,18 @@
 											printf("Connect failed: %s\n", mysqli_connect_error());
 											exit();
 										}
+										$jsonout = unserialize(base64_decode($_POST['dataout']));
+										$carreg = strtolower($_POST['cr']);
 										$colour = $jsonout[0]->primaryColour;
 										$make = $jsonout[0]->make;
 										$datetime = date('Y-m-d H:i:s');
 										$date = $jsonout[0]->motTests[0]->expiryDate;
 										$query = serialize($jsonout);
-										$reminderdate = date('Y-m-d', strtotime($dataout[0]->motTests[0]->expiryDate. ' - '.$_POST['rd']));
+										$reminderdate = date('Y-m-d', strtotime($jsonout[0]->motTests[0]->expiryDate. ' - '.$_POST['rd']));
 										$sql = "INSERT INTO car (car_reg, colour, make, reminder_days,date_added,people_no, mot_date, deleted, motquery, reminder_date)
 										VALUES (?, ?, ?, ?, ?, ?, ?, b'0', ?, ?)";
 										if ($stmt = $mysqli->prepare($sql)) {
-											$stmt->bind_param("sssssssss",$_POST['cr'],$colour,$make,$_POST['rd'],$datetime,$pn,$date,$query, $reminderdate);
+											$stmt->bind_param("sssssssss",$carreg,$colour,$make,$_POST['rd'],$datetime,$pn,$date,$query, $reminderdate);
 											$stmt->execute();
 											$stmt->fetch();
 											$congratulations = "<div class='col-12'><div class='signinsucsess'><P>Car Created!</p></div></div>";
@@ -121,6 +123,7 @@
 					}
 				?>
 			</div>
+			<!--print out the cars-->
 			<?php
 				$output ="";
 				$mysqli = new mysqli($servername, $username, $password, $dbname);
@@ -142,21 +145,22 @@
 					while($stmt->fetch()) {
 						$dataout = unserialize($datain);
 						$reminderdate = date('Y-m-d', strtotime($d. ' - '.$r));
-						$output .="<div class='col-12 col-md-3 car'>
+						$output .="<div class='col-12 col-md-4'>
+							<div class='car'>
 							<p><strong>Car Registration: </strong>".strtoupper($c)."</p>
-							<p><strong>Car Details: </strong>".$cc." ".$m."</p>
+							<p><strong>Car Details: </strong>".ucwords(strtolower($cc))." ".ucwords(strtolower($m))." ".ucwords(strtolower($dataout[0]->model))."</p>
 							<p><strong>MOT Date: </strong>".$d."</p>
-							<p>TEST: ".$dataout[0]->motTests[0]->completedDate."</p>
 							<p><strong>Reminder Days: </strong>".$r."</p>
 							<p><strong>Reminder Date: </strong>".$reminderdate."</p>
 							<h5><strong><a href=\"".SITESITELINK."dashboard.php?dw=d&c=".$c."&r=".$r."\">Delete</a></strong></h5>
+							</div>
 						</div>";
 					}
 					$stmt->close();
 				}
 			?>
 		</div>
-		<div class="row justify-content-md-center">
+		<div class="row">
 			<?php echo $output; ?>
 		</div>
 	</section>

@@ -1,5 +1,6 @@
 <?php include 'header.php';?>
 <?php
+//gets rid of the cookies
 	if (isset($_COOKIE['signincookie'])) {
 		setcookie("acem" ,'', time() - 3600);
 		setcookie('signincookie', '', time() - 3600);

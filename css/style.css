@@ -1,11 +1,19 @@
 /*CSS for The MOT Reminder*/
-
+/*The main sections CSS*/
 section {
 	padding-top: 40px;
 	padding-bottom: 40px;
 	background-color: #FFD96D;
 }
-
+html {
+	position: relative;
+	min-height: 100%;
+	background-color: #FFD96D;
+}
+body {
+	/* Margin bottom by footer height */
+	margin-bottom: 60px;
+}
 /*Navigation*/
 	.re-nav {
 		color: black!important;
@@ -69,11 +77,34 @@ section {
 		background-color: #FFD96D;
 		padding: 30px;
 	}
+/*Main section*/
+	#hello {
+		padding: 100px;
+		background-color: #FFD96D;
+	}
+/*Forgot password*/
+	#forgottenpassword {
+		padding: 100px;
+	}
+	#changepassword {
+		padding: 100px;
+	}
+/*Sign out*/
+	#signout {
+		 padding: 100px;
+	}
+/*Edit */
+	#edit {
+		padding: 100px;
+	}
+/*Form CSS*/
+	/*Button*/
 	.re-button {
 		background-color: #ff6029;
 		font-family: 'Roboto Slab', serif;	
 		color: black;
 	}
+	/*recaptcha*/
 	.g-recaptcha {
 		padding-bottom: 20px;
 		padding-top: 20px;
@@ -85,6 +116,7 @@ section {
 	.re-activated a {
 		font-weight: 700;
 	}
+	/*Congratulations CSS*/
 	.signinsucsess {
 		padding: 20px;
 		text-align: center;
@@ -93,6 +125,7 @@ section {
 	.signinsucsess a {
 		font-weight: 700;
 	}
+	/*Error CSS*/
 	.re-error {
 		color: red;
 		padding:10px 0px;
@@ -105,6 +138,7 @@ section {
 	.re-error p {
 		color: red;
 	}
+	/*Car CSS*/
 	.car {
 		background-color: #ff6029;
 		border-radius: 15px;
@@ -114,12 +148,42 @@ section {
 	.car h5 {
 		text-align: center;
 	}
+	/*Add car form CSS*/
 	.addcar {
 		padding-bottom: 20px;
 	}
+	/*Deleted the car text CSS*/
 	.re-deleted {
 		color: red;
 		font-weight:600;
+	}
+/* The message box is shown when the user clicks on the password field*/
+	#message {
+		display:none;
+		background: #f1f1f1;
+		color: #000;
+		position: relative;
+		padding: 20px;
+		margin-top: 10px;
+		color: black;
+	}
+	#message li {
+		padding: 10px 35px;
+		font-size: 18px;
+	}
+/* Add a green text color and a checkmark when the requirements are right */
+	.valid {
+		color: green;
+	}
+	.valid:before {
+		position: relative;
+	}
+	/* Add a red text color and an "x" when the requirements are wrong */
+	.invalid {
+		color: red;
+	}
+	.invalid:before {
+		position: relative;
 	}
 /*Footer*/
 	#footer {
@@ -127,15 +191,7 @@ section {
 		text-align: center;
 		padding: 40px;
 	}
-	html {
-		position: relative;
-		min-height: 100%;
-		background-color: #FFD96D;
-	}
-	body {
-		/* Margin bottom by footer height */
-		margin-bottom: 60px;
-	}
+
 	.footer {
 		position: absolute;
 		bottom: 0;
@@ -144,22 +200,6 @@ section {
 		height: 60px;
 		line-height: 60px; /* Vertically center the text there */
 		background-color: #f5f5f5;
-	}
-	#hello {
-		padding: 100px;
-		background-color: #FFD96D;
-	}
-	#forgottenpassword {
-		padding: 100px;
-	}
-	#changepassword {
-		padding: 100px;
-	}
-	#signout {
-		 padding: 100px;
-	}
-	#edit {
-		padding: 100px;
 	}
 /*Fonts*/
 /*The main font in the website: font-family: 'Roboto Slab', serif;*/
@@ -220,36 +260,3 @@ section {
 		font-family: 'Roboto Slab', serif;	
 		color: black;
 	}
-	/* The message box is shown when the user clicks on the password field */
-#message {
-    display:none;
-    background: #f1f1f1;
-    color: #000;
-    position: relative;
-    padding: 20px;
-    margin-top: 10px;
-	color: black;
-}
-
-#message li {
-    padding: 10px 35px;
-    font-size: 18px;
-}
-
-/* Add a green text color and a checkmark when the requirements are right */
-.valid {
-    color: green;
-}
-
-.valid:before {
-    position: relative;
-}
-
-/* Add a red text color and an "x" when the requirements are wrong */
-.invalid {
-    color: red;
-}
-
-.invalid:before {
-    position: relative;
-}

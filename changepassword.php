@@ -107,6 +107,7 @@
 					}
 				?>
 				<script>
+				//to check if the password is the same as the confirmed password
 					var password = document.getElementById("pw")
 					, confirm_password = document.getElementById("cpw");
 					function validatePassword(){

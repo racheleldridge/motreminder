@@ -86,9 +86,11 @@
 	<!--sign in-->
 					<div class="col-12 col-md-6" id="signin">
 						<?php 
+							//print error
 							if($error) {
 								echo "<div class='re-error'><h3>Oops!</h3>".$error."</div>";
 							}
+							//print congratulations
 							if ($congratulations) {	
 								echo $congratulations;
 							}

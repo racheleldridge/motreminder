@@ -38,6 +38,7 @@
 			<div class="collapse navbar-collapse re-center" id="navbarCollapse">
 				<ul class="navbar-nav mr-auto">
 					<?php
+						//if the cookie is there
 						if(isset($_COOKIE['signincookie'])) {
 							echo '
 							<li class="nav-item">
@@ -71,5 +72,4 @@
 					?>
 				</ul>
 			</div>
-		</nav>
 		</nav>

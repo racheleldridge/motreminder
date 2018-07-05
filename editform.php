@@ -1,3 +1,4 @@
+<!--the edit form-->
 <form action="edit.php" method="post">
 	<input type="hidden" value="edit" name="do" />
 		<h3>Edit your details</h3>
