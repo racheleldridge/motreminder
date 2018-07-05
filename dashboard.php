@@ -20,11 +20,11 @@
 		}
 		//if the length is correct
 		if (strlen($mys) == 100) {
-			$sql = "UPDATE car c
-				INNER JOIN people p
-				ON c.people_no = p.people_no 
-				SET deleted = b'1'
-				WHERE car_reg = ? AND reminder_days = ? AND session_kid = ?";
+			$sql = "UPDATE car c 
+				INNER JOIN people p 
+				ON c.people_no = p.people_no  
+				SET c.deleted = b'1' 
+				WHERE c.car_reg = ? AND c.reminder_days = ? AND p.session_kid = ?";
 			if ($stmt = $mysqli->prepare($sql)) {
 				$stmt->bind_param("sss",$myc,$myr,$mys);
 				$stmt->execute();
@@ -32,6 +32,9 @@
 				$stmt->close();
 			}
 		}
+	}
+	if($_GET['dw'] == 'd' AND isset($_GET['c']) AND isset($_GET['r'])) {		
+		deleteCar($_GET['c'],$_GET['r'],$_COOKIE['acem']);
 	}
 ?>
 <section id="hello">
@@ -158,6 +161,8 @@
 					}
 					$stmt->close();
 				}
+				
+				
 			?>
 		</div>
 		<div class="row">

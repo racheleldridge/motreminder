@@ -1,5 +1,8 @@
 <!--DB-->
-	<?php include 'config.php';?>
+<?php 
+	ob_start();
+	include 'config.php';
+?>
 <!DOCTYPE html>
 <html>
 	<head>

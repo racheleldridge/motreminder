@@ -1,4 +1,7 @@
-<?php include 'header.php';?>
+<?php 
+	ob_start();
+	include 'header.php';
+?>
 <?php include 'picture.php';?>
 	<!--Both the sign up and the sign in sections-->
 		<section id="sign">
@@ -42,7 +45,6 @@
 											else {
 												//sign in
 												$congratulations .= "<p>Sign in sucessfull!</p>";
-												setcookie("signincookie" ,$fn);
 												$session_kid = generateRandomString(100);
 
 												$xmysqli = new mysqli($servername, $username, $password, $dbname);
@@ -50,7 +52,6 @@
 													printf("Connect failed: %s\n", mysqli_connect_error());
 													exit();
 												}
-									
 												$xsql = "UPDATE people SET session_kid = ? WHERE email = ? AND pwd = ?";
 												
 												//die("UPDATE people SET session_kid = '".$session_kid."' WHERE email = '".$em."' AND pwd = '".$pass."'");
@@ -58,12 +59,12 @@
 												if ($xstmt = $xmysqli->prepare($xsql)) {
 													$xstmt->bind_param("sss",$session_kid, $em,$pass);
 													$xstmt->execute();
-													$xstmt->bind_result();
 													$xstmt->fetch();
 													$xstmt->close();
 												}
+												header("location:dashboard.php");									
+												setcookie("signincookie" ,$fn);
 												setcookie("acem" ,$session_kid);
-												header("location:dashboard.php");
 											}
 										} 
 										else {
