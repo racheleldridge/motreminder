@@ -1,0 +1,3 @@
+database: motreminderx
+username: rachmr
+password: i5IK=#&%SHma
