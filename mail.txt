@@ -1,0 +1,37 @@
+//query
+$sql = "SELECT c.car_reg,c.mot_date, c.reminder_days, c.motquery, p.first_name, p.last_name ,p.email
+FROM car c 
+JOIN people p
+ON c.people_no = p.people_no
+WHERE reminder_date = ?";
+if ($stmt = $mysqli->prepare($sql)) {
+	$stmt->bind_param("s", $today);
+	$stmt->execute();
+	$stmt->bind_result($cr, $motdate, $rd, $motquery, $fn, $ln,$em);
+	$stmt->fetch();
+	echo "xxxx";
+/* 	$dataout = unserialize($motquery);
+	
+	$activationmessage = "<p>Hi ".$fn." ".$ln.",</p>
+	<p>Your MOT for your ".ucwords(strtolower($dataout[0]->colour))." ".ucwords(strtolower($dataout[0]->model))." (".$cr.") is due in ".$rd."
+	Thank you very much for creating an account. Click on the activation link below to activate your account</p><p>Activation link: <a href=\"".$activationlink."\">".$activationlink."</a></p><p>Your great team.</p>";
+	$to = $em;
+	$subject = 'MOT Reminder for you';
+	$from = NOREPLYEMAIL;
+	// To send HTML mail, the Content-type header must be set
+	$headers  = 'MIME-Version: 1.0' . "\r\n";
+													$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+													// Create email headers
+													$headers .= 'From: '.$from."\r\n".
+													'Reply-To: '.$from."\r\n" .
+													'X-Mailer: PHP/' . phpversion();
+													// Compose a simple HTML email message
+													$message = '<html><body>';
+													$message .= $activationmessage;
+													$message .= '</body></html>';
+													// Sending email
+													mail($to, $subject, $message, $headers);
+	
+	
+	$stmt->close(); */
+}
