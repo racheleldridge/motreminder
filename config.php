@@ -8,6 +8,7 @@
 	define("USERNAME", 'ukrachex_rachmr');
 	define("PASSWORD", 'i5IK=#&%SHma');
 	define("DBNAME", 'ukrachex_motreminderx'); */
+	//define("SITESITELINK","http://rachel.55uk.net/motreminder"); //Add trailling slash
 	
 	$servername = "localhost";
 	$username = "rachel_e";
@@ -17,6 +18,8 @@
 	define("USERNAME", 'rachel_e');
 	define("PASSWORD", 'password');
 	define("DBNAME", 'motreminder_re');
+	define("SITESITELINK","http://192.168.1.70/rachel/motreminder/motreminder/");	
+	define("NOREPLYEMAIL","noreply@creotec.com");
 	//check connection 
 	if (mysqli_connect_errno()) {
 		printf("Connect failed: %s\n", mysqli_connect_error());
@@ -33,9 +36,7 @@
 		return $randomString;
 	}
 	
-	//define("SITESITELINK","http://rachel.55uk.net/motreminder/"); //Add trailling slash
-	define("SITESITELINK","http://192.168.1.70/rachel/motreminder/motreminder/");	
-	define("NOREPLYEMAIL","noreply@creotec.com");
+	
 
 	//function to clear a string of special characters
 	function cleanA($string) {

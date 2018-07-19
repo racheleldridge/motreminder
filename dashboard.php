@@ -29,6 +29,10 @@
 				$stmt->bind_param("sss",$myc,$myr,$mys);
 				$stmt->execute();
 				echo "<h5 class='re-deleted'>Car Deleted</h5>";
+				$sql = "DELETE FROM car WHERE deleted = b'1'";
+				if ($stmt = $mysqli->prepare($sql)) {
+					$stmt->execute();
+				}
 				$stmt->close();
 			}
 		}
@@ -89,13 +93,13 @@
 										$colour = $jsonout[0]->primaryColour;
 										$make = $jsonout[0]->make;
 										$datetime = date('Y-m-d H:i:s');
-										$date = $jsonout[0]->motTests[0]->expiryDate;
+										$motdate = str_replace(".","-",$jsonout[0]->motTests[0]->expiryDate);
 										$query = serialize($jsonout);
-										$reminderdate = date('Y-m-d', strtotime($jsonout[0]->motTests[0]->expiryDate. ' - '.$_POST['rd']));
+										$reminderdate = date('Y-m-d', strtotime($motdate. ' - '.$_POST['rd']));
 										$sql = "INSERT INTO car (car_reg, colour, make, reminder_days,date_added,people_no, mot_date, deleted, motquery, reminder_date)
 										VALUES (?, ?, ?, ?, ?, ?, ?, b'0', ?, ?)";
 										if ($stmt = $mysqli->prepare($sql)) {
-											$stmt->bind_param("sssssssss",$carreg,$colour,$make,$_POST['rd'],$datetime,$pn,$date,$query, $reminderdate);
+											$stmt->bind_param("sssssssss",$carreg,$colour,$make,$_POST['rd'],$datetime,$pn,$motdate,$query, $reminderdate);
 											$stmt->execute();
 											$stmt->fetch();
 											$congratulations = "<div class='col-12'><div class='signinsucsess'><P>Car Created!</p></div></div>";

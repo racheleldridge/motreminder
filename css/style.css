@@ -91,11 +91,16 @@ body {
 	}
 /*Sign out*/
 	#signout {
-		 padding: 100px;
+		 padding: 120px;
+	}
+	#signout div {
+		position: relative;
+		min-height: 100%;
+		background-color: #FFD96D;
 	}
 /*Edit */
 	#edit {
-		padding: 100px;
+		padding: 100px;	
 	}
 /*Form CSS*/
 	/*Button*/
