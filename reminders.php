@@ -1,5 +1,10 @@
-<?php include 'config.php';
-
+<?php include 'config.php';?>
+<meta http-equiv="refresh" content="3600" > 
+<?php 
+$hour = date('G');
+$alerttime = date("G");
+echo $alerttime;
+if ($alerttime == "13") {
 $mysqli = new mysqli($servername, $username, $password, $dbname);
 if (mysqli_connect_errno()) {
 	printf("Connect failed: %s\n", mysqli_connect_error());
@@ -29,7 +34,7 @@ function sendReminder($f,$l,$to,$d,$arr,$ct=0) {
 	$message .= "<p>Dear ".stripslashes($f." ".$l).",</p><p>This is a quick MOT reminder for the car with the information below.</p>".$carinfotable."<h2>NEXT MOT DATE: ".$d."</h2>";
 	$message .= '</body></html>';
 	echo "<p>Processing: ".$ct." / ".$arr[0]->registration."</p>";
-	//mail($to, $subject, $message, $headers);
+	mail($to, $subject, $message, $headers);
 }
 													
 				$output ="";
@@ -57,5 +62,5 @@ function sendReminder($f,$l,$to,$d,$arr,$ct=0) {
 					}
 					$stmt->close();
 				}
-				
+}			
 ?>
