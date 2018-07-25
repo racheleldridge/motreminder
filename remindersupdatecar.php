@@ -4,6 +4,33 @@ $mysqli = new mysqli($servername, $username, $password, $dbname);
 if (mysqli_connect_errno()) {
 	printf("Connect failed: %s\n", mysqli_connect_error());
 	exit();
+	$sql = "SELECT p.people_no, c.car_reg, c.colour, c.make, c.reminder_days, c.mot_date, c.motquery, p.first_name, p.last_name ,p.email 
+		FROM car c
+		JOIN people p 
+		ON c.people_no = p.people_no
+		WHERE reminder_date = ? AND c.deleted = b'0'";
+	if ($stmt = $mysqli->prepare($sql)) {
+		$stmt->bind_param("s",$today);
+		$stmt->execute();
+		$stmt->store_result();
+		if($stmt->num_rows === 0) exit('<h5>There are no reminders set</h5>');
+			$stmt->bind_result($p,$c,$cc,$m,$r,$d,$datain,$pf,$pl,$pe);
+			$ct = 1;					
+			while($stmt->fetch()) {
+				sendReminder($pf,$pl,$pe,$d,unserialize($datain),$ct);
+				$ct++;
+			}
+			$stmt->close();
+	}
+if () {
+	
+}
+
+
+$mysqli = new mysqli($servername, $username, $password, $dbname);
+if (mysqli_connect_errno()) {
+	printf("Connect failed: %s\n", mysqli_connect_error());
+	exit();
 }
 $today = date("Y-m-d");
 
