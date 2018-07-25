@@ -1,10 +1,5 @@
 <?php include 'config.php';?>
-<meta http-equiv="refresh" content="3600" > 
 <?php 
-$hour = date('G');
-$alerttime = date("G");
-echo $alerttime;
-if ($alerttime == "13") {
 $mysqli = new mysqli($servername, $username, $password, $dbname);
 if (mysqli_connect_errno()) {
 	printf("Connect failed: %s\n", mysqli_connect_error());
@@ -62,5 +57,5 @@ function sendReminder($f,$l,$to,$d,$arr,$ct=0) {
 					}
 					$stmt->close();
 				}
-}			
+			
 ?>
