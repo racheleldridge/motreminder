@@ -1,7 +1,6 @@
 <!--access the dvla--> 
 <?php
-	define("APIKEY","ptZAjbJWQO2LSzitce0JM9wZo4ASO2yV7XWGmoD7");
-	define("ROOTURL","https://beta.check-mot.service.gov.uk/trade/vehicles/mot-tests");
+	
 	$myreg  = preg_replace('/[^a-zA-Z0-9]/','',$_POST['cr']);
 	$errors = array();
 	$jsonout = array();
@@ -16,7 +15,8 @@
 		$response = curl_exec($ch);
 		if (curl_errno($ch))   {
 			$error['errors'] = 'ERROR -> ' . curl_errno($ch) . ': ' . curl_error($ch);
-		} else {
+		} 
+		else {
 			if (stripos($response,"errorMessage") === false) {
 				$jsonout = json_decode($response);
 				$iok = "ok";

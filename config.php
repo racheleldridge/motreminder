@@ -46,4 +46,7 @@
 	function cleanEmail($string) {
 		return preg_replace('/[^A-Za-z0-9]\-_@./', '', $string); // Removes special chars.
 	}
+	
+	define("APIKEY","ptZAjbJWQO2LSzitce0JM9wZo4ASO2yV7XWGmoD7");
+	define("ROOTURL","https://beta.check-mot.service.gov.uk/trade/vehicles/mot-tests");
 ?>
