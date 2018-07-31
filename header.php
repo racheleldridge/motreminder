@@ -9,12 +9,13 @@
 		<!--Meta tags-->
 		    <meta charset="utf-8">
 			<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-			<meta name="description" content="A MOT reminder app">
+			<meta name="description" content="<?php echo $description;?>">
+			<meta name="keywords" content="HTML,CSS,PHP,MOT,MOT reminder,reminder">
 			<meta name="author" content="Rachel Eldridge">
 		<!--favicon-->
 			<link rel="icon" href="images/favicon.ico">
 		<!--title-->
-			<title>MOT Reminder</title>
+			<title><?php echo $title;?></title>
 		<!--Bootstrap style-->
 		    <link href="css/bootstrap.min.css" rel="stylesheet">   
 		<!--Font CSS-->

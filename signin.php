@@ -1,3 +1,7 @@
+<?php
+$title = "Sign in -Annual MOT Reminder App";
+$description = "Sign in to the Anual MOT Reminder App - The MOT reminder is an easy way to keep a track of your car MOT's. Whether you're a buisness or just want to keep a track of your family cars, this is the perfect reminder for you! You can have multiple cars and multiple reminders for each. We will send you an email when the reminder is due.";
+?>
 <?php 
 	ob_start();
 	include 'header.php';
