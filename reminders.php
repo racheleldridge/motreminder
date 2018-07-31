@@ -51,6 +51,7 @@ function sendReminder($f,$l,$to,$d,$arr,$ct=0) {
 					if($stmt->num_rows === 0) exit('<h5>There are no reminders set</h5>');
 					$stmt->bind_result($p,$c,$cc,$m,$r,$d,$datain,$pf,$pl,$pe);
 					$ct = 1;					
+
 					while($stmt->fetch()) {
 						sendReminder($pf,$pl,$pe,$d,unserialize($datain),$ct);
 						$ct++;
